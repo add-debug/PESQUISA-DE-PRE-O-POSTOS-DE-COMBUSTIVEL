@@ -1,0 +1,126 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e0f2f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Container principal */
+#login-screen,
+#cadastro-screen,
+#main-screen {
+  background-color: #ffffff;
+  border: 1px solid #004d40;
+  border-radius: 10px;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 77, 64, 0.2);
+}
+
+/* Cabeçalho fixo */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #004d40;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5em;
+  z-index: 1000;
+}
+
+/* Títulos */
+h2, h3 {
+  color: #00695c;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Inputs e selects */
+input, select, button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #004d40;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* Botões */
+button {
+  background-color: #00796b;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #004d40;
+}
+
+/* Links */
+a {
+  color: #004d40;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+}
+
+/* Informações do posto */
+#info-posto {
+  margin-top: 20px;
+  background-color: #c8e6c9;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 0.95em;
+}
+
+/* Mapa */
+#map {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  #login-screen,
+  #cadastro-screen,
+  #main-screen {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  input, select, button {
+    max-width: 100%;
+  }
+
+  header {
+    font-size: 1.2em;
+    padding: 10px;
+  }
+
+input[disabled] {
+  background-color: #f0f0f0;
+  color: #666;
+}
+}
