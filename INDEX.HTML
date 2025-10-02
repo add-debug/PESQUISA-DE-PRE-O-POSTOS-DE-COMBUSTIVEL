@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Combustível Baixo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>COMBUSTÍVEL BAIXO</h1>
+  </header>
+
+  <!-- Login -->
+  <div id="login-screen">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="E-mail" required />
+    <input type="password" id="password" placeholder="Senha" required />
+    <button onclick="login()">Entrar</button>
+    <button onclick="abrirCadastro()">Cadastrar novo usuário</button>
+    <a href="#" onclick="esqueciSenha()">Esqueci minha senha</a>
+  </div>
+
+  <!-- Cadastro de usuário -->
+  <div id="cadastro-screen" style="display:none;">
+    <h2>Cadastrar Usuário</h2>
+    <input type="email" id="novoEmail" placeholder="E-mail" required />
+    <input type="password" id="novaSenha" placeholder="Senha" required />
+    <button onclick="cadastrarUsuario()">Cadastrar</button>
+    <button onclick="voltarLogin()">Voltar</button>
+  </div>
+
+  <!-- Tela principal -->
+  <div id="main-screen" style="display:none;">
+    <h2>Consulta de Preços</h2>
+
+    <select id="estado" onchange="carregarCidades()">
+      <option value="">Selecione o Estado</option>
+    </select>
+
+    <select id="cidade" onchange="carregarPostos()">
+      <option value="">Selecione a Cidade</option>
+    </select>
+
+    <select id="posto" onchange="mostrarInfoPosto()">
+      <option value="">Selecione o Posto</option>
+    </select>
+
+    <div id="info-posto"></div>
+
+    <button onclick="editarPreco()">Editar Posto</button>
+    <button onclick="abrirCadastroPosto()">Cadastrar Novo Posto</button>
+
+    <!-- Cadastro de novo posto -->
+    <div id="cadastro-posto" style="display:none; margin-top:20px;">
+      <h3>Novo Posto</h3>
+      <input type="text" id="novoNomePosto" placeholder="Nome do Posto" />
+      <h4>Preços</h4>
+      <input type="number" step="0.01" id="novoAlcool" placeholder="Álcool (R$)" />
+      <input type="number" step="0.01" id="novoGasolina" placeholder="Gasolina Comum (R$)" />
+      <input type="number" step="0.01" id="novoGasolinaAditivada" placeholder="Gasolina Aditivada (R$)" />
+      <input type="number" step="0.01" id="novoDiesel" placeholder="Diesel Comum (R$)" />
+      <input type="number" step="0.01" id="novoDieselS10" placeholder="Diesel S-10 (R$)" />
+      <h4>Endereço</h4>
+      <input type="text" id="cep" placeholder="CEP" onblur="buscarCEP()" />
+      <input type="text" id="rua" placeholder="Rua" />
+      <input type="text" id="numero" placeholder="Número" />
+      <input type="text" id="bairro" placeholder="Bairro" />
+      <input type="text" id="cidadeEndereco" placeholder="Cidade" disabled />
+      <input type="text" id="estadoEndereco" placeholder="Estado" disabled />
+      <button onclick="pegarLocalizacaoAtual()">📍 Usar localização atual</button>
+      <button onclick="salvarNovoPosto()">Salvar Posto</button>
+    </div>
+
+    <!-- Edição de posto existente -->
+    <div id="edicao-posto" style="display:none; margin-top:20px;">
+      <h3>Editar Posto</h3>
+      <input type="text" id="editNomePosto" placeholder="Nome do Posto" disabled />
+      <h4>Preços</h4>
+      <input type="number" step="0.01" id="editAlcool" placeholder="Álcool (R$)" />
+      <input type="number" step="0.01" id="editGasolina" placeholder="Gasolina Comum (R$)" />
+      <input type="number" step="0.01" id="editGasolinaAditivada" placeholder="Gasolina Aditivada (R$)" />
+      <input type="number" step="0.01" id="editDiesel" placeholder="Diesel Comum (R$)" />
+      <input type="number" step="0.01" id="editDieselS10" placeholder="Diesel S-10 (R$)" />
+      <h4>Endereço</h4>
+      <input type="text" id="editRua" placeholder="Rua" />
+      <input type="text" id="editNumero" placeholder="Número" />
+      <input type="text" id="editBairro" placeholder="Bairro" />
+      <button onclick="salvarEdicaoPosto()">Salvar Edição</button>
+    </div>
+
+    <!-- Mapa -->
+    <div id="map"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=API_AQUI&callback=initMap"></script>
+</body>
+</html>
